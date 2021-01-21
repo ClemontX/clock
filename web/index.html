@@ -18,29 +18,81 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="dark-mode.css">
 <script>
+
+	// StopWatch
+
+	var sw_running = false
+	var stopwatch = function () {
+
+		var sw_hr = 0
+		var sw_min = 0
+		var sw_sec = 0
+
+		if(!sw_running) {
+			sw_running = true
+			sw = setInterval(function () {
+				
+				sw_sec++
+				if(sw_sec >= 60) {
+					sw_sec = 0
+					sw_min++
+				}
+
+				else if(sw_min >= 60) {
+					sw_min = 0
+					sw_hr++
+				}
+
+				else if(sw_hr >= 24) {
+					sw_hr = 0
+					return
+				}
+
+				if((sw_sec + '').length == 1) {
+					sw_sec = "0" + sw_sec
+				}
+
+				if((sw_min + '').length == 1) {
+					sw_min = "0" + sw_min
+				}
+
+				if((sw_hr + '').length == 1) {
+					sw_hr = "0" + sw_hr
+				}
+
+				console.log(sw_hr + ":" + sw_min + ":" + sw_sec)
+
+			}, 1000)
+		} else {
+			clearInterval(sw)
+			return
+		}
+
+	}
+
 <!--
 'use strict';
 (function () {
-	function uhrzeit() {
-		var jetzt = new Date(),
-			h = jetzt.getHours(),
+	function time() {
+		var now = new Date(),
+			h = now.getHours(),
 			h = h-2,
-			m = jetzt.getMinutes(),
-			s = jetzt.getSeconds();
-		m = fuehrendeNull(m);
-		s = fuehrendeNull(s);
-		document.getElementById('uhr')
+			m = now.getMinutes(),
+			s = now.getSeconds();
+		m = leadingZero(m);
+		s = leadingZero(s);
+		document.getElementById('clock')
 			.innerHTML = h + ':' + m + ':' + s;
-      document.getElementById('titletime')
+		document.getElementById('titletime')
 			.innerHTML = h + ':' + m + ':' + s;
-		setTimeout(uhrzeit, 500);
+		setTimeout(time, 500);
 	}
 
-	function fuehrendeNull(zahl) {
+	function leadingZero(zahl) {
 		zahl = (zahl < 10 ? '0' : '') + zahl;
 		return zahl;
 	}
-	document.addEventListener('DOMContentLoaded', uhrzeit);
+	document.addEventListener('DOMContentLoaded', time);
 }());
 -->
 </script>
@@ -48,23 +100,23 @@
 <!--
 'use strict';
 (function () {
-	function uhrzeit() {
-		var jetzt = new Date(),
-			h = jetzt.getHours(),
-			m = jetzt.getMinutes(),
-			s = jetzt.getSeconds();
-		m = fuehrendeNull(m);
-		s = fuehrendeNull(s);
-		document.getElementById('uhr2')
+	function time() {
+		var now = new Date(),
+			h = now.getHours(),
+			m = now.getMinutes(),
+			s = now.getSeconds();
+		m = leadingZero(m);
+		s = leadingZero(s);
+		document.getElementById('clock2')
 			.innerHTML = h + ':' + m + ':' + s;
-		setTimeout(uhrzeit, 500);
+		setTimeout(time, 500);
 	}
 
-	function fuehrendeNull(zahl) {
+	function leadingZero(zahl) {
 		zahl = (zahl < 10 ? '0' : '') + zahl;
 		return zahl;
 	}
-	document.addEventListener('DOMContentLoaded', uhrzeit);
+	document.addEventListener('DOMContentLoaded', time);
 }());
 -->
 </script>
@@ -95,12 +147,12 @@
 
     <h5 class="content">UTC</h2>
 	
-    <h1 id="uhr"></h1>
+    <h1 id="clock"></h1>
 
 
     <h5 class="content">EDDP</h2>
 	
-    <h1  id="uhr2"></h1>
+    <h1  id="clock2"></h1>
 	<a href="https://clock.clemontx.de" target="popup" onclick="window.open('https://clock.clemontx.de','name','width=434,height=400')">Pop-UP</a>
             </td>
     </main>
