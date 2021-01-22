@@ -76,10 +76,9 @@
 (function () {
 	function time() {
 		var now = new Date(),
-			h = now.getHours(),
-			h = h-2,
-			m = now.getMinutes(),
-			s = now.getSeconds();
+			h = now.getUTCHours(),
+			m = now.getUTCMinutes(),
+			s = now.getUTCSeconds();
 		m = leadingZero(m);
 		s = leadingZero(s);
 		document.getElementById('clock')
