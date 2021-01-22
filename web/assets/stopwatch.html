@@ -59,7 +59,7 @@
 					sw_hr = "0" + sw_hr
 				}
 
-				console.log(sw_hr + ":" + sw_min + ":" + sw_sec)
+				document.getElementById("sw_main").innerHTML = sw_hr + ":" + sw_min + ":" + sw_sec
 
 			}, 1000)
 		} else {
@@ -88,12 +88,19 @@
         sw_start(remaining[0], remaining[1], remaining[2])
     }
 
+    function sw_reset() {
+        sw_hr = 0
+        sw_min = 0
+        sw_sec = 0
+        document.getElementById("sw_main").innerHTML = "00:00:00"
+    }
+
     </script>
 </head>
 <body class="bg-white text-center d-flex h-100">
   <div class="container d-flex p-3 mx-auto flex-column">
     <header class="mb-auto">
-      <h3 class="float-left">ClemontX - clock</h3>
+      <h3 class="float-left">ClemontX - Clock - Stopwatch</h3>
       <nav class="nav justify-content-center float-right">
         <div class="nav-link">
 
@@ -111,7 +118,7 @@
     </header>
 
     <main role="main">
-		<p>ClemontX - Clock</p>
+		<h1 id="sw_main">00:00:00</h1>
     </main>
 
     <footer class="mt-auto">
