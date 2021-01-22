@@ -13,119 +13,19 @@
 		<!-- Favicon END -->
 		
   
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title id=titletime></title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="dark-mode.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title id=titletime></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="dark-mode.css">
 <script>
 
-	// StopWatch
-
-	var sw_running = false
-	var stopwatch = function () {
-
-		var sw_hr = 0
-		var sw_min = 0
-		var sw_sec = 0
-
-		if(!sw_running) {
-			sw_running = true
-			sw = setInterval(function () {
-				
-				sw_sec++
-				if(sw_sec >= 60) {
-					sw_sec = 0
-					sw_min++
-				}
-
-				else if(sw_min >= 60) {
-					sw_min = 0
-					sw_hr++
-				}
-
-				else if(sw_hr >= 24) {
-					sw_hr = 0
-					return
-				}
-
-				if((sw_sec + '').length == 1) {
-					sw_sec = "0" + sw_sec
-				}
-
-				if((sw_min + '').length == 1) {
-					sw_min = "0" + sw_min
-				}
-
-				if((sw_hr + '').length == 1) {
-					sw_hr = "0" + sw_hr
-				}
-
-				console.log(sw_hr + ":" + sw_min + ":" + sw_sec)
-
-			}, 1000)
-		} else {
-			clearInterval(sw)
-			sw_running = false
-			return
-		}
-
-	}
-
-<!--
-'use strict';
-(function () {
-	function time() {
-		var now = new Date(),
-			h = now.getUTCHours(),
-			m = now.getUTCMinutes(),
-			s = now.getUTCSeconds();
-		m = leadingZero(m);
-		s = leadingZero(s);
-		document.getElementById('clock')
-			.innerHTML = h + ':' + m + ':' + s;
-		document.getElementById('titletime')
-			.innerHTML = h + ':' + m + ':' + s;
-		setTimeout(time, 500);
-	}
-
-	function leadingZero(zahl) {
-		zahl = (zahl < 10 ? '0' : '') + zahl;
-		return zahl;
-	}
-	document.addEventListener('DOMContentLoaded', time);
-}());
--->
-</script>
-<script>
-<!--
-'use strict';
-(function () {
-	function time() {
-		var now = new Date(),
-			h = now.getHours(),
-			m = now.getMinutes(),
-			s = now.getSeconds();
-		m = leadingZero(m);
-		s = leadingZero(s);
-		document.getElementById('clock2')
-			.innerHTML = h + ':' + m + ':' + s;
-		setTimeout(time, 500);
-	}
-
-	function leadingZero(zahl) {
-		zahl = (zahl < 10 ? '0' : '') + zahl;
-		return zahl;
-	}
-	document.addEventListener('DOMContentLoaded', time);
-}());
--->
 </script>
 </head>
 
 <body class="bg-white text-center d-flex h-100">
   <div class="container d-flex p-3 mx-auto flex-column">
     <header class="mb-auto">
-      <h3 class="float-left">EDDP-Time - UTC - #MMS2021</h3>
+      <h3 class="float-left">ClemontX - clock</h3>
       <nav class="nav justify-content-center float-right">
         <div class="nav-link">
 
@@ -143,18 +43,7 @@
     </header>
 
     <main role="main">
-
-
-    <h5 class="content">UTC</h2>
-	
-    <h1 id="clock"></h1>
-
-
-	<h5 class="content">EDDP</h2>
-	
-    <h1  id="clock2"></h1>
-	<a href="https://clock.clemontx.de" target="popup" onclick="window.open('https://clock.clemontx.de','name','width=434,height=400')">Pop-UP</a>
-            </td>
+		<p>ClemontX - Clock</p>
     </main>
 
     <footer class="mt-auto">

@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+            <!-- Favicon -->
+          <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+          <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+          <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+          <link rel="manifest" href="../site.webmanifest">
+          <!-- Favicon END -->
+          
+    
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title id=titletime></title>
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link rel="stylesheet" href="../dark-mode.css">
+    <script>
+    // StopWatch+
+    var sw_hr
+	var sw_min
+    var sw_sec
+
+	var sw_running = false
+	var sw_start = function (_sw_hr, _sw_min, _sw_sec) {
+        sw_hr = _sw_hr
+        sw_min = _sw_min
+        sw_sec = _sw_sec
+
+		if(!sw_running) {
+			sw_running = true
+			sw = setInterval(function () {
+				
+				sw_sec++
+				if(sw_sec >= 60) {
+					sw_sec = 0
+					sw_min++
+				}
+
+				if(sw_min >= 60) {
+					sw_min = 0
+					sw_hr++
+				}
+
+				if(sw_hr >= 24) {
+					sw_hr = 0
+					return
+				}
+
+				if((sw_sec + '').length == 1) {
+					sw_sec = "0" + sw_sec
+				}
+
+				if((sw_min + '').length == 1) {
+					sw_min = "0" + sw_min
+				}
+
+				if((sw_hr + '').length == 1) {
+					sw_hr = "0" + sw_hr
+				}
+
+				console.log(sw_hr + ":" + sw_min + ":" + sw_sec)
+
+			}, 1000)
+		} else {
+			clearInterval(sw)
+			sw_running = false
+			return
+        }
+    }
+
+    var remaining;
+        
+    function sw_stop() {
+        if(sw_running){
+            remaining = [sw_hr, sw_min, sw_sec]
+            clearInterval(sw)
+            sw_running = false
+            console.log("Paused!")
+
+        } else {
+            console.log("Stopwatch is not running!")
+            return
+        }
+    }
+
+    function sw_continue() {
+        sw_start(remaining[0], remaining[1], remaining[2])
+    }
+
+    </script>
+</head>
+<body class="bg-white text-center d-flex h-100">
+  <div class="container d-flex p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <h3 class="float-left">ClemontX - clock</h3>
+      <nav class="nav justify-content-center float-right">
+        <div class="nav-link">
+
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="darkSwitch">
+            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+          </div>
+
+        </div>
+      </nav>
+      <style>
+        h1 { font-size:5em; }
+
+      </style>
+    </header>
+
+    <main role="main">
+		<p>ClemontX - Clock</p>
+    </main>
+
+    <footer class="mt-auto">
+      <p>&copy; 2020-2021 - ClemontX - Carl Dominik Sander - <a href="https://github.com/ClemontX/clock/" target="_blank">GitHub</a> - <a href="https://dev.azure.com/clemont/ClemontX.DE/_build/latest?definitionId=1" target="_blank"><img src="https://dev.azure.com/clemont/ClemontX.DE/_apis/build/status/clemontx-clock%20-%20Docker"></a></p>
+    </footer>
+
+    <!-- You must load 'dark-mode-switch.js' at the foot of the page -->
+    <script src="../dark-mode-switch.min.js"></script>
+  </div>
+</body>
+</html>
